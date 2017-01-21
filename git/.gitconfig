@@ -2,3 +2,5 @@
 [user]
 	name = Zack Sampson
 	email = zls.1988@gmail.com
+[core]
+	excludesfile = ~/.gitignore
