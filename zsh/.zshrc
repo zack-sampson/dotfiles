@@ -67,7 +67,7 @@ source $ZSH/oh-my-zsh.sh
 if [[ -n $SSH_CONNECTION ]]; then
   export EDITOR='kak'
 else
-  export EDITOR='mvim'
+  export EDITOR='kak'
 fi
 
 # Compilation flags
