@@ -4,3 +4,13 @@
 	email = zls.1988@gmail.com
 [core]
 	excludesfile = ~/.gitignore
+[alias]
+	rph = rev-parse HEAD
+        cp = cherry-pick
+        st = status -s
+        cl = clone
+        ci = commit
+        co = checkout
+        br = branch 
+        diff = diff --word-diff
+        dc = diff --cached
