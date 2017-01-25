@@ -14,3 +14,5 @@
         br = branch 
         diff = diff --word-diff
         dc = diff --cached
+[pull]
+	rebase = true
