@@ -85,9 +85,13 @@ fi
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 
+# Set up cargo (rust package manager)
 if [ -d $HOME/.cargo ] ; then
   if [ -f $HOME/.cargo/env ] ; then
     source $HOME/.cargo/env
   fi
 fi
 
+if command -v most > /dev/null 2>&1 ; then
+  export PAGER=most
+fi
