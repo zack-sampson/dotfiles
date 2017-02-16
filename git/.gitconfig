@@ -16,3 +16,5 @@
         dc = diff --cached
 [pull]
 	rebase = true
+[http]
+	postBuffer = 524288000
