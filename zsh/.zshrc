@@ -94,6 +94,8 @@ fi
 
 if command -v most > /dev/null 2>&1 ; then
   export PAGER=most
+  alias less=$PAGER
+fi
 
 if [ -d $HOME/bin ] ; then
   export PATH=$HOME/bin:$PATH
