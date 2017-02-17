@@ -94,6 +94,9 @@ fi
 
 if command -v most > /dev/null 2>&1 ; then
   export PAGER=most
+
+if [ -d $HOME/bin ] ; then
+  export PATH=$HOME/bin:$PATH
 fi
 
 LS_COLORS=$LS_COLORS:'di=0;37:' ; export LS_COLORS
