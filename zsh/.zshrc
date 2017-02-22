@@ -101,4 +101,4 @@ if [ -d $HOME/bin ] ; then
   export PATH=$HOME/bin:$PATH
 fi
 
-LS_COLORS=$LS_COLORS:'di=0;37:' ; export LS_COLORS
+LS_COLORS=$LS_COLORS:'di=0;35:' ; export LS_COLORS
