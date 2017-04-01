@@ -1,0 +1,23 @@
+set global tabstop     2
+set global indentwidth 2
+
+# Line numbers
+# add-highlighter line_numbers -hlcursor
+
+# Highlighters
+add-highlighter -group / group trailing_white_spaces
+add-highlighter -group /trailing_white_spaces regex \h+$ 0:Error
+
+add-highlighter -group / group tabs
+add-highlighter -group /tabs regex \t+ 0:blue
+
+# Enable these highlighters when not in insert
+hook global InsertEnd .* %{
+  add-highlighter ref tabs
+  add-highlighter ref trailing_white_spaces
+}
+
+hook global InsertBegin .* %{
+  remove-highlighter tabs
+  remove-highlighter trailing_white_spaces
+}
