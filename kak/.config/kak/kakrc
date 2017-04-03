@@ -1,5 +1,5 @@
-set global tabstop     2
-set global indentwidth 2
+set global tabstop     4
+set global indentwidth 4
 
 # Line numbers
 # add-highlighter line_numbers -hlcursor
