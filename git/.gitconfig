@@ -1,20 +1,23 @@
 # This is Git's per-user configuration file.
 [user]
-	name = Zack Sampson
-	email = zls.1988@gmail.com
+        name = Zack Sampson
+        email = zls.1988@gmail.com
 [core]
-	excludesfile = ~/.gitignore
+        excludesfile = ~/.gitignore
 [alias]
-	rph = rev-parse HEAD
+        rph = rev-parse HEAD
         cp = cherry-pick
         st = status -s
         cl = clone
         ci = commit
         co = checkout
-        br = branch 
+        br = branch
         diff = diff --word-diff
         dc = diff --cached
+        rh = reset --hard
+        smu = submodule update
+        smr = submodule update --rebase
 [pull]
-	rebase = true
+        rebase = true
 [http]
-	postBuffer = 524288000
+        postBuffer = 524288000
