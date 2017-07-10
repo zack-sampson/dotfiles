@@ -12,11 +12,15 @@
         ci = commit
         co = checkout
         br = branch
-        diff = diff --word-diff
-        dc = diff --cached
+        a = add
+        rb = rebase
+        f = fetch --all
+        d = diff --word-diff --submodule=diff
+        dl = diff --word-diff --submodule=log
         rh = reset --hard
         smu = submodule update
         smr = submodule update --rebase
+        ciaa = commit -a -C HEAD --amend
 [pull]
         rebase = true
 [http]
