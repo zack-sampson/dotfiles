@@ -15,7 +15,7 @@
         a = add
         rb = rebase
         f = fetch --all
-        d = diff --word-diff --submodule=diff
+        d = diff --word-diff 
         dl = diff --word-diff --submodule=log
         rh = reset --hard
         smu = submodule update
@@ -26,4 +26,4 @@
 [http]
         postBuffer = 524288000
 [help]
-	autocorrect = 10
+        autocorrect = 10
