@@ -1,6 +1,9 @@
 set global tabstop     4
 set global indentwidth 4
 
+# disable mouse (who thought this was a good idea...?)
+set global ui_options ncurses_enable_mouse=false
+
 # Highlight bad whitespace
 add-highlighter -group / group trailing_white_spaces
 add-highlighter -group /trailing_white_spaces regex \h+$ 0:Error
