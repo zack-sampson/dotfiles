@@ -1,8 +1,9 @@
-! ! This is the 'dark' solarized theme, copied from https://github.com/solarized/xresources
-! !
-! ! Caveat: because our workstations are based on an old debian, they run xrdb with the -nocpp
-! !         flag. this means that the preprocessor doesn't run, and the #defines in the above
-! !         page are not substituted. thus, I've done the substitutions manually
+!! Clipboard
+! URxvt.keysym.C-c: perl:clipboard:copy
+! URxvt.keysym.C-v: perl:clipboard:paste
+! URxvt.keysym.M-C-v: perl:clipboard:paste_escaped
+
+! This is the 'dark' solarized theme, copied from https://github.com/solarized/xresources
 
 *background:            #fdf6e3
 *foreground:            #657b83
