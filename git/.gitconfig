@@ -14,6 +14,7 @@
         br = branch
         a = add
         rb = rebase
+        cfd = clean -fd
         f = fetch --all
         d = diff --word-diff --submodule=diff 
         dl = diff --word-diff --submodule=log
