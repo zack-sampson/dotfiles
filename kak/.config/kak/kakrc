@@ -28,3 +28,9 @@ hook global InsertBegin .* %{
     remove-highlighter tabs
     remove-highlighter trailing_white_spaces
 }
+
+# jj to escape insert mode
+hook global InsertChar j %{ try %{
+  exec -draft hH <a-k>jj<ret> d
+  exec <esc>
+}}
