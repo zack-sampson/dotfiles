@@ -18,6 +18,10 @@ hook global WinCreate .* %{
 	add-highlighter ref trailing_white_spaces
 }
 
+hook global WinCreate .*/COMMIT_EDITMSG %{
+    autowrap-enable
+}
+
 # Enable these highlighters when not in insert
 hook global InsertEnd .* %{
     add-highlighter ref tabs
