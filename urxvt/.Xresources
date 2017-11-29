@@ -3,6 +3,10 @@
 ! URxvt.keysym.C-v: perl:clipboard:paste
 ! URxvt.keysym.M-C-v: perl:clipboard:paste_escaped
 
+!! Keybindings
+! disable a-s
+URxvt.perl-ext-common: "default, -searchable-scrollback"
+
 ! This is the 'dark' solarized theme, copied from https://github.com/solarized/xresources
 
 *background:            #fdf6e3
@@ -61,3 +65,5 @@ URxvt.cursorBlink:          true
 URxvt.cursorUnderline:      false
 
 URxvt.pointerBlank:         true
+
+
