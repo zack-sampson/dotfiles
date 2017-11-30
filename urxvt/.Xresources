@@ -7,6 +7,12 @@
 ! disable a-s
 URxvt.perl-ext-common: "default, -searchable-scrollback"
 
+!! Misc
+! Disable picture insert mode
+URxvt.iso14755: false
+URxvt.iso14755_52: false
+
+!! Colors
 ! This is the 'dark' solarized theme, copied from https://github.com/solarized/xresources
 
 *background:            #fdf6e3

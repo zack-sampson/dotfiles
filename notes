@@ -2,3 +2,6 @@ Removing urxvt hotkeys
 
 Problem: urxvt hotkeys hook things like a-a and make kakoune harder to usei
 Solution: Add a line to .Xresources?
+
+Problem: disable picture-insert mode
+Solution: add some lines to Xresources
