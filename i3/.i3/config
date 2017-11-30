@@ -20,6 +20,9 @@ floating_modifier $mod
 # start a terminal
 bindsym $mod+Return exec urxvt
 
+# start a web browswer
+bindsym $mod+o exec google-chrome
+
 # kill focused window
 bindsym $mod+Shift+Q kill
 
