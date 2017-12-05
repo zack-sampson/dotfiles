@@ -5,3 +5,10 @@ Solution: Add a line to .Xresources?
 
 Problem: disable picture-insert mode
 Solution: add some lines to Xresources
+
+Lesson learned: don't open this file on the computer you're editing
+
+RDP doesn't reload xsession, remember to reboot machine.
+
+.xsession is the executable
+.xsessionrc is source'd first and is appropriate for environment variables
