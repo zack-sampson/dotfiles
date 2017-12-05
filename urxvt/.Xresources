@@ -24,7 +24,7 @@ URxvt.iso14755_52: false
 
 !! black dark/light
 *color0:                #073642
-*color8:                #8394963
+*color8:                #002b36
 
 !! red dark/light
 *color1:                #dc322f
