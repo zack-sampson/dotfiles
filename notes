@@ -12,3 +12,11 @@ RDP doesn't reload xsession, remember to reboot machine.
 
 .xsession is the executable
 .xsessionrc is source'd first and is appropriate for environment variables
+
+software required:
+ - i3
+ - feh
+ - urxvt
+ - kak
+ - tmux
+
