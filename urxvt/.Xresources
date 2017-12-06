@@ -5,7 +5,8 @@
 
 !! Keybindings
 ! disable a-s
-URxvt.perl-ext-common: "default, -searchable-scrollback"
+URxvt.perl-ext:
+URxvt.perl-ext-common:
 
 !! Misc
 ! Disable picture insert mode
