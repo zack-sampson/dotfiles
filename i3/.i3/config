@@ -146,3 +146,5 @@ bar {
     position top
     status_command i3status
 }
+
+exec --no-startup-id feh --randomize --bg-fill ~/dotfiles/wallpapers/*
