@@ -4,6 +4,12 @@
         email = zls.1988@gmail.com
 [core]
         excludesfile = ~/.gitignore
+[pull]
+        rebase = true
+[http]
+        postbuffer = 524288000
+[help]
+        autocorrect = 10
 [alias]
         rph = rev-parse HEAD
         cp = cherry-pick
@@ -15,8 +21,9 @@
         a = add
         rb = rebase
         cfd = clean -fd
-        f = fetch --all
-        d = diff --word-diff --submodule=diff 
+        fa = fetch --all
+        f = fetch
+        d = diff --word-diff --submodule=diff
         dl = diff --word-diff --submodule=log
         rh = reset --hard
         smu = submodule update
