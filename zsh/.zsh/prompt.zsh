@@ -50,6 +50,20 @@ zstyle ':vcs_info:*' enable git
 fi
 }
 
-precmd () { vcs_info }
+# track execution time
+preexec() {
+    timer=$(($(date +%s%N)/1000000))
+}
+
+precmd () {
+    vcs_info
+    if [ $timer ]; then
+        now=$(($(date +%s%N)/1000000))
+        elapsed=$(($now-$timer))
+        export RPROMPT="%F{cyan}${elapsed}ms %{$reset_color%}"
+        unset timer
+    fi
+}
+
 NEWLINE=$'\n'
 PROMPT='[%*] ${fdefault}[%n@${hostname_color}%m${fdefault}]:%3~ ${vcs_info_msg_0_} %f${NEWLINE} $ '
