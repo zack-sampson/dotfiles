@@ -2,13 +2,13 @@
 export PATH=$HOME/bin:/usr/local/bin:$PATH
 
 # Path to your oh-my-zsh installation.
-export ZSH=$HOME/.oh-my-zsh
+#export ZSH=$HOME/.oh-my-zsh
 
 # Set name of the theme to load. Optionally, if you set this to "random"
 # it'll load a random theme each time that oh-my-zsh is loaded.
 # See https://github.com/robbyrussell/oh-my-zsh/wiki/Themes
 #ZSH_THEME="robbyrussell"
-ZSH_THEME="aussiegeek"
+#ZSH_THEME="aussiegeek"
 
 # Uncomment the following line to use case-sensitive completion.
 # CASE_SENSITIVE="true"
@@ -52,9 +52,9 @@ ZSH_THEME="aussiegeek"
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(git brew tmux)
+#plugins=(git brew tmux)
 
-source $ZSH/oh-my-zsh.sh
+#source $ZSH/oh-my-zsh.sh
 
 # User configuration
 
@@ -102,3 +102,68 @@ if [ -d $HOME/bin ] ; then
 fi
 
 LS_COLORS=$LS_COLORS:'di=0;35:' ; export LS_COLORS
+
+# prompt
+# assign a prompt color by hashing the letters of the hostname
+# idea copied from the irssi script 'nickcolor.pl'
+# Daniel Kertesz <daniel@spatof.org>
+
+autoload -U colors
+colors
+
+setopt prompt_subst
+
+colnames=(
+    black
+    red
+    green
+    yellow
+    blue
+    magenta
+    cyan
+    white
+    default
+)
+
+# Create color variables for foreground and background colors
+for color in $colnames; do
+    eval f$color='%{${fg[$color]}%}'
+    eval b$color='%{${bg[$color]}%}'
+done
+
+# Hash the hostname and return a fixed "random" color
+function _hostname_color() {
+    local chash=0
+    foreach letter ( ${(ws::)HOST[(ws:.:)1]} )
+        (( chash += #letter ))
+    end
+    local crand=$(( $chash % $#colnames ))
+    local crandname=$colnames[$crand]
+    echo "%{${fg[$crandname]}%}"
+}
+hostname_color=$(_hostname_color)
+
+autoload -Uz vcs_info
+zstyle ':vcs_info:*' stagedstr 'M'
+zstyle ':vcs_info:*' unstagedstr 'M'
+zstyle ':vcs_info:*' check-for-changes true
+zstyle ':vcs_info:*' actionformats '%F{5}[%F{2}%b%F{3}|%F{1}%a%F{5}]%f '
+zstyle ':vcs_info:*' formats \
+  '%F{5}[%F{2}%b%F{5}] %F{2}%c%F{3}%u%f'
+zstyle ':vcs_info:git*+set-message:*' hooks git-untracked
+zstyle ':vcs_info:*' enable git
++vi-git-untracked() {
+  if [[ $(git rev-parse --is-inside-work-tree 2> /dev/null) == 'true' ]] && \
+  [[ $(git ls-files --other --directory --exclude-standard | sed q | wc -l | tr -d ' ') == 1 ]] ; then
+  hook_com[unstaged]+='%F{1}??%f'
+fi
+}
+
+precmd () { vcs_info }
+#PROMPT='%F{5}[%F{2}%n%F{5}] %F{3}%3~ ${vcs_info_msg_0_} %f%# #'
+#PROMPT='%F{5}[%F{2}%n%F{5}] %F{3}%3~ ${vcs_info_mg_0_} %f%# '
+NEWLINE=$'\n'
+PROMPT='[%*] ${fdefault}[%n@${hostname_color}%m${fdefault}]:%3~ ${vcs_info_msg_0_} %f${NEWLINE} $ '
+#PROMPT='${hostname_color}%n${fdefault}@${hostname_color}%m${fdefault} %#'
+
+alias g="git"
