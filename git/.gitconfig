@@ -25,6 +25,8 @@
         f = fetch
         d = diff --word-diff --submodule=diff
         dl = diff --word-diff --submodule=log
+        r = reset
+        rs = reset --soft
         rh = reset --hard
         smu = submodule update
         smr = submodule update --rebase
