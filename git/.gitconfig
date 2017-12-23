@@ -20,7 +20,10 @@
         br = branch
         a = add
         rb = rebase
+        rbi = rebase --interactive
+        rbc = rebase --continue
         cfd = clean -fd
+        s = show
         fa = fetch --all
         f = fetch
         d = diff --word-diff --submodule=diff
