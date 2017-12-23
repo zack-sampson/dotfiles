@@ -19,21 +19,9 @@ setopt COMPLETE_IN_WORD
 # move to the end of the word after a completion though
 setopt ALWAYS_TO_END
 
-# add timestamp and duration to history
-setopt EXTENDED_HISTORY
-
 # otherwise ^S and ^Q fuck up the prompt
 setopt NO_FLOW_CONTROL
 
-# don't record lots of redundant shit in history
-setopt HIST_IGNORE_DUPS
-setopt HIST_IGNORE_SPACE
-
-# let me edit the history command before executing it
-setopt HIST_VERIFY
-
-# append to history in real time
-setopt INC_APPEND_HISTORY
 
 # allow comments (great for copy/paste)
 setopt INTERACTIVE_COMMENTS
