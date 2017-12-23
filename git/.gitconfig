@@ -10,27 +10,5 @@
         postbuffer = 524288000
 [help]
         autocorrect = 10
-[alias]
-        rph = rev-parse HEAD
-        cp = cherry-pick
-        st = status -s
-        cl = clone
-        ci = commit
-        co = checkout
-        br = branch
-        a = add
-        rb = rebase
-        rbi = rebase --interactive
-        rbc = rebase --continue
-        cfd = clean -fd
-        s = show
-        fa = fetch --all
-        f = fetch
-        d = diff --word-diff --submodule=diff
-        dl = diff --word-diff --submodule=log
-        r = reset
-        rs = reset --soft
-        rh = reset --hard
-        smu = submodule update
-        smr = submodule update --rebase
-        ciaa = commit -a -C HEAD --amend
+[include]
+        path = ~/.git.d/aliases.config
