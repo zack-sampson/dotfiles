@@ -34,9 +34,3 @@
         smu = submodule update
         smr = submodule update --rebase
         ciaa = commit -a -C HEAD --amend
-[pull]
-        rebase = true
-[http]
-        postBuffer = 524288000
-[help]
-        autocorrect = 10
