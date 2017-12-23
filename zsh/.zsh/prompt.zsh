@@ -50,15 +50,20 @@ zstyle ':vcs_info:*' enable git
 fi
 }
 
+DATECMD=date
+if [ x${ZLS_OS} = x"Mac" ]; then
+  DATECMD=gdate
+fi
+
 # track execution time
 preexec() {
-    timer=$(($(date +%s%N)/1000000))
+    timer=$(($(${DATECMD} +%s%N)/1000000))
 }
 
 precmd () {
     vcs_info
     if [ $timer ]; then
-        now=$(($(date +%s%N)/1000000))
+        now=$(($(${DATECMD} +%s%N)/1000000))
         elapsed=$(($now-$timer))
         export RPROMPT="%F{cyan}${elapsed}ms %{$reset_color%}"
         unset timer
