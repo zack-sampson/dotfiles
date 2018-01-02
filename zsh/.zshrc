@@ -3,7 +3,7 @@ if [ -f ~/zsh/first.zsh ] ; then
 fi
 
 # load from modules in config directory
-for config (~/.zsh/*.zsh.config) source $config
+for config (~/.zsh/*.config.zsh) source $config
 
 if [ -f ~/.zsh/finally.zsh ] ; then
   source ~/.zsh/finally.zsh
