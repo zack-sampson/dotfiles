@@ -71,4 +71,4 @@ precmd () {
 }
 
 NEWLINE=$'\n'
-PROMPT='[%*] ${fdefault}%n@${hostname_color}%m${fdefault}:%3~ ${vcs_info_msg_0_} %f»${NEWLINE} $ '
+PROMPT='[%*] ${fdefault}%n@${hostname_color}%m${fdefault}:%~ ${vcs_info_msg_0_} %f»${NEWLINE} $ '
