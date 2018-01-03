@@ -11,9 +11,8 @@ add-highlighter -group /trailing_white_spaces regex \h+$ 0:Error
 add-highlighter -group / group tabs
 add-highlighter -group /tabs regex \t+ 0:Error
 
-# Always show line numbers; initialize with bad whitespace shown
+# show bad whitespace on startup
 hook global WinCreate .* %{
-    add-highlighter number_lines -hlcursor
 	add-highlighter ref tabs
 	add-highlighter ref trailing_white_spaces
 }
