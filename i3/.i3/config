@@ -22,7 +22,7 @@ gaps inner 15
 gaps outer 5
 
 # start a terminal
-bindsym $mod+Return exec urxvt
+bindsym $mod+Return exec xfce4-terminal
 
 # start a web browswer
 bindsym $mod+o exec google-chrome
