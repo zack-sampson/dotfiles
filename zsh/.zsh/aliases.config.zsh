@@ -15,7 +15,8 @@ if ! command -v exa >/dev/null ; then
   alias llah='ls -lAh'
 else
   # let's try this out
-  alias ls='exa -la --git'
+  # can't use --git because it's too slow with meta
+  alias ls='exa -la'
   alias ll='exa -l'
   alias la='exa -a'
   alias lla='exa -la'
