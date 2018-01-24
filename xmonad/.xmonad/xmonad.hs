@@ -1,18 +1,18 @@
 import XMonad
 
-main = xmonad def
-      {  terminal    = myTerminal
-      ,  modMask     = myModMask
-      ,  borderWidth = myBorderWidth
-      }
-myTerminal    = "xfce4-terminal"
-myModMask     = mod4Mask -- Win key or Super_L
-myBorderWidth = 3
+import XMonad.Config.Xfce
+import XMonad.Hooks.SetWMName
+import XMonad.Util.EZConfig
+import XMonad.Util.Run
 
--- main = do
---     xmonad $ defaultConfig
---       {  terminal    = myTerminal
---       ,  modMask     = myModMask
---       ,  borderWidth = myBorderWidth
---       }
--- 
+main = do
+  xmonad $ xfceConfig
+    { startupHook = startupHook xfceConfig >> setWMName "LG3D"
+    , terminal = "xfce4-terminal"
+    , modMask = mod4Mask
+    }
+    `additionalKeysP`
+    [ ("M-o", safeSpawnProg "google-chrome")
+    , ("M-r", spawn $ "dmenu_run" )
+    ]
+
