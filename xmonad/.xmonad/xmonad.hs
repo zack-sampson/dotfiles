@@ -10,6 +10,7 @@ main = do
     { startupHook = startupHook xfceConfig >> setWMName "LG3D"
     , terminal = "xfce4-terminal"
     , modMask = mod4Mask
+    , borderWidth = 3
     }
     `additionalKeysP`
     [ ("M-o", safeSpawnProg "google-chrome")
