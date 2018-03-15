@@ -13,8 +13,14 @@ add-highlighter -group /tabs regex \t+ 0:Error
 
 # show bad whitespace on startup
 hook global WinCreate .* %{
-	add-highlighter ref tabs
-	add-highlighter ref trailing_white_spaces
+    add-highlighter ref tabs
+    add-highlighter ref trailing_white_spaces
+}
+
+# use spaces instead of tabs
+#
+hook global InsertChar \t %{
+    exec -draft -itersel h@
 }
 
 hook global WinCreate .*/COMMIT_EDITMSG %{
