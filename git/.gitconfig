@@ -1,14 +1,15 @@
 # This is Git's per-user configuration file.
 [user]
-        name = Zack Sampson
-        email = zls.1988@gmail.com
+    name = Zack Sampson
+    email = zls@twosigma.com
 [core]
-        excludesfile = ~/.gitignore
+    excludesfile = ~/.git.d/gitignore-global
 [pull]
-        rebase = true
+    rebase = true
 [http]
-        postbuffer = 524288000
+    postbuffer = 524288000
 [help]
-        autocorrect = 10
+    autocorrect = 10
 [include]
         path = ~/.git.d/aliases.config
+    path = ~/.git.d/aliases.config
