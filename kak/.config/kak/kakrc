@@ -39,7 +39,7 @@ hook global InsertBegin .* %{
 }
 
 # jj to escape insert mode
-hook global InsertChar j %{ try %{
-  exec -draft hH <a-k>jj<ret> d
+hook global InsertChar k %{ try %{
+  exec -draft hH <a-k>jk<ret> d
   exec <esc>
 }}
