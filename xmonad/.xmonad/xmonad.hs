@@ -21,5 +21,6 @@ main = do
     `additionalKeysP`
     [ ("M-o", safeSpawnProg "google-chrome")
     , ("M-r", spawn $ "dmenu_run" )
+    , ("M-<Return>", spawn $ "xfce4-terminal --execute tmux")
     ]
 
