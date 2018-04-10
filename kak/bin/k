@@ -1,0 +1,31 @@
+#!/bin/zsh
+
+set -eo pipefail
+
+current_dir=$(pwd)
+
+function connect_to_session {
+  session=$1
+  socket_file=$(kak -l | grep $session || true)
+  if [[ -z "${socket_file}" ]] ; then
+    kak -d -s $session
+  fi
+  shift 1
+  exec kak -c ${session} "$@"
+}
+
+if (echo ${current_dir} | grep "^${HOME}/contexts" >/dev/null); then
+  # 6th node in the path. example:
+  # /home/zls/contexts/smooth/backend-migration/ts/smooth/benchmarks/
+  #   -> backend-migration
+  context=$(echo ${current_dir} | cut -d/ -f6)
+  if [ -n "${context}" ] ; then
+    connect_to_session ${context} "$@"
+  fi
+  workspace=$(echo ${current_dir} | cut -d/ -f5)
+  if [ -n "${workspace}" ] ; then
+    connect_to_session ${workspace} "$@"
+  fi
+fi
+
+exec kak "$@"
