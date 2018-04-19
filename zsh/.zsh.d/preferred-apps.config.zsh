@@ -5,3 +5,5 @@ fi
 if command -v kak-man-pager > /dev/null 2>&1 ; then
   export MANPAGER=kak-man-pager
 fi
+
+export EDITOR=kak
