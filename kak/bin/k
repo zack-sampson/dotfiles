@@ -6,7 +6,7 @@ current_dir=$(pwd)
 
 function connect_to_session {
   session=$1
-  socket_file=$(kak -l | grep $session || true)
+  socket_file=$(kak -l | grep --line-regexp $session || true)
   if [[ -z "${socket_file}" ]] ; then
     kak -d -s $session
   fi
