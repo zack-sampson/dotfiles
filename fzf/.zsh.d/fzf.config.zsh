@@ -1,3 +1,7 @@
+if ! which fzf >/dev/null 2>&1 ; then
+  exit 0
+fi
+
 if [ -d $HOME/.nix-profile ] ; then
     source $HOME/.nix-profile/share/fzf/key-bindings.zsh
     source $HOME/.nix-profile/share/fzf/completion.zsh
