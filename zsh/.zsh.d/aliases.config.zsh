@@ -48,3 +48,6 @@ else
   }
 fi
 
+function rr() {
+  cd $(g rr)
+}
