@@ -5,16 +5,13 @@ set global indentwidth 4
 set global ui_options ncurses_enable_mouse=false
 
 # Highlight bad whitespace
-add-highlighter -group / group trailing_white_spaces
-add-highlighter -group /trailing_white_spaces regex \h+$ 0:Error
-
-add-highlighter -group / group tabs
-add-highlighter -group /tabs regex \t+ 0:Error
+add-highlighter shared/bad_whitespace group -passes colorize|move|wrap
+add-highlighter shared/bad_whitespace/trailing regex \h+$ 0:Error
+add-highlighter shared/bad_whitespace/tabs show-whitespaces -spc ' ' -nbsp ' ' -lf ' '
 
 # show bad whitespace on startup
 hook global WinCreate .* %{
-    add-highlighter ref tabs
-    add-highlighter ref trailing_white_spaces
+    add-highlighter window/bad_whitespace ref bad_whitespace
 }
 
 # use spaces instead of tabs
@@ -29,13 +26,11 @@ hook global WinCreate .*/COMMIT_EDITMSG %{
 
 # Enable these highlighters when not in insert
 hook global InsertEnd .* %{
-    add-highlighter ref tabs
-    add-highlighter ref trailing_white_spaces
+    add-highlighter window/bad_whitespace ref bad_whitespace
 }
 
 hook global InsertBegin .* %{
-    remove-highlighter tabs
-    remove-highlighter trailing_white_spaces
+    remove-highlighter window/bad_whitespace
 }
 
 # jj to escape insert mode
