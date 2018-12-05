@@ -1,0 +1,12 @@
+#!/bin/zsh
+
+set -euo pipefail
+
+CONTEXTS_ROOT_DIR=${CONTEXTS_ROOT_DIR:-$HOME/contexts}
+
+context_relative_path=${$(pwd)#${CONTEXTS_ROOT_DIR}/}
+context=$(echo ${context_relative_path} | cut -f1 -d/)
+
+if [ -n "${context}" ]; then
+    echo ${context}
+fi

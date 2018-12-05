@@ -1,0 +1,20 @@
+#!/bin/zsh
+
+set -euo pipefail
+
+context=$1
+
+if [ -z "${context}" ]; then
+  echo "usage: context <CONTEXT>"
+  exit 1
+fi
+
+CONTEXTS_ROOT_DIR=${CONTEXTS_ROOT_DIR:-$HOME/contexts}
+contextDir=${CONTEXTS_ROOT_DIR}/${context}
+
+if [ ! -d "${contextDir}" ]; then
+  (>&2 echo "no such context ${context} in ${CONTEXTS_ROOT_DIR}")
+  exit 1
+fi
+
+echo "${contextDir}"
