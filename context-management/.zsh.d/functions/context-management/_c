@@ -1,0 +1,9 @@
+#compdef c
+
+function _c {
+  local line
+    _values $($HOME/bin/list-contexts)
+}
+
+
+

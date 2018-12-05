@@ -1,3 +1,4 @@
+fpath=(~/.zsh.d/functions/context-management $fpath)
 
 if [ -f $HOME/bin/get-directory-for-context ]; then
   function c {

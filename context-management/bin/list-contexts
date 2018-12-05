@@ -1,0 +1,7 @@
+#!/bin/zsh
+
+set -euo pipefail
+
+CONTEXTS_ROOT_DIR=${CONTEXTS_ROOT_DIR:-$HOME/contexts}
+
+cd ${CONTEXTS_ROOT_DIR} && fd --max-depth 1 --type d --color never
