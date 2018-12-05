@@ -242,16 +242,16 @@ for color in $colnames; do
 done
 
 # Hash the hostname and return a fixed "random" color
-function _hostname_color() {
+function _deterministic_colorize() {
     local chash=0
-    foreach letter ( ${(ws::)HOST[(ws:.:)1]} )
+    foreach letter ( ${(ws::)1[(ws:.:)1]} )
         (( chash += #letter ))
     end
     local crand=$(( $chash % $#colnames ))
     local crandname=$colnames[$crand]
     echo "%{${fg[$crandname]}%}"
 }
-hostname_color=$(_hostname_color)
+hostname_color=$(_deterministic_colorize $HOST)
 
 # Add git info functions
 autoload -Uz vcs_info
@@ -296,4 +296,16 @@ ZSH_THEME_GIT_PROMPT_DIRTY="%{$reset_color%}) %{$fg[yellow]%}✗"
 ZSH_THEME_GIT_PROMPT_CLEAN="%{$reset_color%})"
 NEWLINE=$'\n'
 local ret_status="%(?:%{$fg_bold[green]%}» :%{$fg_bold[red]%}» )"
-PROMPT='[%*] ${fdefault}%n@${hostname_color}%m${fdefault}:%~ $(git_prompt_info)%f${ret_status}%{$reset_color%}${NEWLINE} $ '
+function _prompt() {
+    local timestamp="[%*]"
+    local hostname="${fdefault}%n@${hostname_color}%m${fdefault}"
+    local context=$($HOME/bin/get-current-context)
+    local context_for_prompt=""
+    if [ -n "${context}" ]; then
+        context_for_prompt="(c:$(_deterministic_colorize ${context})${context}${fdefault}) "
+    fi
+    echo "${timestamp} ${hostname}:${context_for_prompt}%~ $(git_prompt_info)%f${ret_status}%{$reset_color%}${NEWLINE} $ "
+}
+
+PROMPT='$(_prompt)'
+
