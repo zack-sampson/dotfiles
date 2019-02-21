@@ -2,18 +2,25 @@
 
 set -euo pipefail
 
-context=$1
+CONTEXTS_ROOT_DIR=${CONTEXTS_ROOT_DIR:-$HOME/contexts}
 
-if [ -z "${context}" ]; then
-  echo "usage: context <CONTEXT>"
-  exit 1
+# remove trailing slash
+CONTEXTS_ROOT_DIR=${CONTEXTS_ROOT_DIR%/}
+if [[ $# -ge 1 ]] ; then
+    context=$1
+else
+    # if we are in a context and the user did not specify a parameter, go
+    # to the root of that context
+    if pwd | grep ${CONTEXTS_ROOT_DIR} >/dev/null ; then
+        suffix=${PWD#"$CONTEXTS_ROOT_DIR"}
+        context=$(echo $suffix | cut -f2 -d/)
+    fi
 fi
 
-CONTEXTS_ROOT_DIR=${CONTEXTS_ROOT_DIR:-$HOME/contexts}
 contextDir=${CONTEXTS_ROOT_DIR}/${context}
 
 if [ ! -d "${contextDir}" ]; then
-  (>&2 echo "no such context ${context} in ${CONTEXTS_ROOT_DIR}")
+  (>&2 echo "no such context in ${CONTEXTS_ROOT_DIR} and not currently in a context")
   exit 1
 fi
 
