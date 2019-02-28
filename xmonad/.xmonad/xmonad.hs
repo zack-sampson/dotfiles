@@ -15,7 +15,7 @@ main = do
       { ppOutput = hPutStrLn xmproc
       , ppTitle = xmobarColor "green" "" . shorten 50
       }
-    , terminal = "xfce4-terminal"
+    , terminal = "urxvt"
     , modMask = mod4Mask
     , borderWidth = 3
     }
@@ -42,7 +42,7 @@ main = do
     `additionalKeysP`
     [ ("M-o", safeSpawnProg "google-chrome")
     , ("M-d", spawn $ "dmenu_run" )
-    , ("M-<Return>", spawn $ "xfce4-terminal --execute tmux")
+    , ("M-<Return>", spawn $ "urxvt -e dvtm")
     , ("M-<Backspace>", spawn "xmonad --recompile; xmonad --restart")
     ]
 
