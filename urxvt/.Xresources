@@ -60,7 +60,7 @@ URxvt.geometry:             90x30
 URxvt.loginShell:           true
 
 ! ! Fonts
-URxvt*font: xft:InconsolataGo:pixelsize=18
+URxvt*font: xft:InconsolataGo:pixelsize=22
 URxvt*boldFont: xft:InconsolataGo:pixelsize=18
 
 ! ! Scrollbar
