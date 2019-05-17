@@ -49,5 +49,8 @@ else
 fi
 
 function rr() {
-  cd $(g rr)
+  local repositoryRoot=$(g rr 2>/dev/null)
+  if [ -n "${repositoryRoot}" ]; then
+    cd $(g rr)
+  fi
 }
