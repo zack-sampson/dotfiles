@@ -1,17 +1,17 @@
-!! Clipboard
-! URxvt.keysym.C-c: perl:clipboard:copy
-! URxvt.keysym.C-v: perl:clipboard:paste
-! URxvt.keysym.M-C-v: perl:clipboard:paste_escaped
-
 !! Keybindings
 ! disable a-s
-URxvt.perl-ext:
-URxvt.perl-ext-common:
+URxvt.keysym.M-s: builtin-string:
+!URxvt.perl-ext:
+URxvt.perl-ext-common: default, selection-to-clipboard
 
 !! Misc
 ! Disable picture insert mode
 URxvt.iso14755: false
 URxvt.iso14755_52: false
+
+!! Clipboard
+URxvt.keysym.Shift-Control-C: eval:selection_to_clipboard
+URxvt.keysym.Shift-Control-V: eval:paste_clipboard
 
 !! Colors
 ! This is the 'dark' solarized theme, copied from https://github.com/solarized/xresources
