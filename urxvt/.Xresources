@@ -61,7 +61,7 @@ URxvt.loginShell:           true
 
 ! ! Fonts
 URxvt*font: xft:InconsolataGo:pixelsize=22
-URxvt*boldFont: xft:InconsolataGo:pixelsize=18
+URxvt*boldFont: xft:InconsolataGo:pixelsize=22:style=Bold
 
 ! ! Scrollbar
 URxvt.scrollStyle:          rxvt
