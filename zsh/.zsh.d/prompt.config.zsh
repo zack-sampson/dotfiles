@@ -10,7 +10,20 @@ function git_prompt_info() {
   if [[ "$(command git config --get oh-my-zsh.hide-status 2>/dev/null)" != "1" ]]; then
     ref=$(command git symbolic-ref HEAD 2> /dev/null) || \
     ref=$(command git rev-parse --short HEAD 2> /dev/null) || return 0
-    echo "$ZSH_THEME_GIT_PROMPT_PREFIX${ref#refs/heads/}$(parse_git_dirty)$ZSH_THEME_GIT_PROMPT_SUFFIX"
+    local ref_string="${ref#refs/heads/}"
+    local ref_color=$(_deterministic_colorize "${ref_string}")
+    local ref_section="${ref_color}${ref_string}${fdefault}"
+
+    local meta_section=""
+    local meta_ref
+    if git meta root >/dev/null && [[ "$(git meta root)" != "$(git rev-parse --show-toplevel)" ]]; then
+      meta_ref=$(command git meta symbolic-ref HEAD 2> /dev/null) || \
+      meta_ref=$(command git meta rev-parse --short HEAD 2> /dev/null) || return 0
+      local meta_ref_string="${meta_ref#refs/heads/}"
+      local meta_ref_color=$(_deterministic_colorize "${meta_ref_string}")
+      meta_section="${meta_ref_color}${meta_ref_string}${fdefault}/"
+    fi
+    echo "(g:${meta_section}${ref_section}$(parse_git_dirty)"
   fi
 }
 
@@ -88,7 +101,8 @@ function _deterministic_colorize() {
     end
     local crand=$(( $chash % $#colnames ))
     local crandname=$colnames[$crand]
-    echo "%{${fg[$crandname]}%}"
+    colorized="%{${fg[$crandname]}%}"
+    echo "${colorized}"
 }
 hostname_color=$(_deterministic_colorize $HOST)
 
