@@ -16,7 +16,8 @@ function git_prompt_info() {
 
     local meta_section=""
     local meta_ref
-    if git meta root >/dev/null && [[ "$(git meta root)" != "$(git rev-parse --show-toplevel)" ]]; then
+    meta_root=$(git meta root 2>/dev/null)
+    if [[ -n "${meta_root}" ]] && [[ "${meta_root}" != "$(git rev-parse --show-toplevel)" ]]; then
       meta_ref=$(command git meta symbolic-ref HEAD 2> /dev/null) || \
       meta_ref=$(command git meta rev-parse --short HEAD 2> /dev/null) || return 0
       local meta_ref_string="${meta_ref#refs/heads/}"
