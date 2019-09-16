@@ -83,7 +83,6 @@ colnames=(
     blue
     magenta
     cyan
-    white
     default
 )
 
