@@ -21,6 +21,7 @@ hook global InsertChar \t %{
 }
 
 hook global WinCreate .*/COMMIT_EDITMSG %{
+    set buffer autowrap_column 50
     autowrap-enable
 }
 
