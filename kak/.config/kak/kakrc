@@ -21,7 +21,8 @@ hook global InsertChar \t %{
 }
 
 hook global WinCreate .*/COMMIT_EDITMSG %{
-    set buffer autowrap_column 50
+    add-highlighter window/ column 50 default,blue
+    set buffer autowrap_column 72
     autowrap-enable
 }
 
