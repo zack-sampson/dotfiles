@@ -27,11 +27,11 @@ hook global WinCreate .*/COMMIT_EDITMSG %{
 }
 
 # Enable these highlighters when not in insert
-hook global InsertEnd .* %{
+hook global ModeChange pop:insert:.* %{
     add-highlighter window/bad_whitespace ref bad_whitespace
 }
 
-hook global InsertBegin .* %{
+hook global ModeChange push:.*:insert %{
     remove-highlighter window/bad_whitespace
 }
 
