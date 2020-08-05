@@ -125,6 +125,12 @@ fi
 
 DATECMD=date
 if [ x${ZLS_OS} = x"Mac" ]; then
+  if ! which gdate 2>/dev/null >/dev/null ; then
+    echo "You must install gdate for this prompt to work. Use the following command:"
+    echo
+    echo "  brew install coreutils"
+    echo
+  fi
   DATECMD=gdate
 fi
 
