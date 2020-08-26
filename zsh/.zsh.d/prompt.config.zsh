@@ -149,6 +149,8 @@ precmd () {
     fi
 }
 
+# export KUBE_PS1_CONTEXT_ENABLE=off
+
 ZSH_THEME_GIT_PROMPT_PREFIX="(%{$fg[green]%}"
 ZSH_THEME_GIT_PROMPT_SUFFIX="%{$reset_color%} "
 ZSH_THEME_GIT_PROMPT_DIRTY="%{$reset_color%}) %{$fg[yellow]%}✗"
@@ -163,7 +165,7 @@ function _prompt() {
     if [ -n "${context}" ]; then
         context_for_prompt="(c:$(_deterministic_colorize ${context})${context}${fdefault}) "
     fi
-    echo "${timestamp} ${hostname}:${context_for_prompt}%~ $(git_prompt_info)%f${ret_status}%{$reset_color%}${NEWLINE} $ "
+    echo "${timestamp} $(kube_ps1) ${hostname}:${context_for_prompt}%~ %f${ret_status}%{$reset_color%}${NEWLINE} $ "
 }
 
 PROMPT='$(_prompt)'
