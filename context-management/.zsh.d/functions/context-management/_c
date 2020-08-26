@@ -1,4 +1,4 @@
-#compdef c
+compdef c
 
 function _c {
   local line
