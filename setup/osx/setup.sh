@@ -9,3 +9,12 @@ mkdir -p ${HOME}/.config
 if ! which brew ; then
     /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install.sh)"
 fi
+
+HOMEBREW_TARGETS=(
+    kakoune
+    stow
+)
+
+for target in ${HOMEBREW_TARGETS} ; do
+    brew install ${target} </dev/null
+done
