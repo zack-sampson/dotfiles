@@ -47,5 +47,9 @@ BASIC_STOW_TARGETS=(
 )
 
 for target in ${BASIC_STOW_TARGETS} ; do
-    stow ${target}
+    stow -R ${target}
 done
+
+# install jdk
+brew cask install adoptopenjdk
+
