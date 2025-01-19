@@ -1,7 +1,6 @@
-# This is Git's per-user configuration file.
 [user]
 	name = Zack Sampson
-	email = zls@twosigma.com
+	email = zls@fastmail.com
 [core]
     excludesfile = ~/.git.d/gitignore-global
 [pull]
