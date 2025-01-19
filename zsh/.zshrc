@@ -8,3 +8,4 @@ for config (~/.zsh.d/*.config.zsh) source $config
 if [ -f ~/.zsh.d/finally.zsh ] ; then
   source ~/.zsh.d/finally.zsh
 fi
+
