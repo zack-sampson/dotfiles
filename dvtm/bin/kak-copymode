@@ -1,3 +1,0 @@
-#!/bin/bash
-
-exec kak -e "map global normal D ':exec y%<lt>a-R><ret> ; :wq <ret>'; exec vb" "$@"
