@@ -8,8 +8,28 @@ function g() {
 }
 
 # ls aliases
-if ! command -v exa >/dev/null ; then
+# use eza if we have it
+if ! command -v eza >/dev/null ; then
+   # let's try this out
+  # can't use --git because it's too slow with meta
   function ls() {
+    eza -la "$@"
+  }
+  function ll() {
+    eza -l "$@"
+  }
+  function la() {
+    eza -a "$@"
+  }
+  function lla() {
+    eza -la "$@"
+  }
+  # eza is human readable by default
+  function llah() {
+    eza -la "$@"
+  }
+else
+ function ls() {
     ls --color=auto "$@"
   }
   function la() {
@@ -27,30 +47,11 @@ if ! command -v exa >/dev/null ; then
   function llah() {
     ls -lAh "$@"
   }
-else
-  # let's try this out
-  # can't use --git because it's too slow with meta
-  function ls() {
-    exa -la "$@"
-  }
-  function ll() {
-    exa -l "$@"
-  }
-  function la() {
-    exa -a "$@"
-  }
-  function lla() {
-    exa -la "$@"
-  }
-  # exa is human readable by default
-  function llah() {
-    exa -la "$@"
-  }
 fi
 
 function rr() {
   local repositoryRoot=$(g rr 2>/dev/null)
   if [ -n "${repositoryRoot}" ]; then
-    cd $(g rr)
+    cd $(g rev-parse --show-toplevel)
   fi
 }
