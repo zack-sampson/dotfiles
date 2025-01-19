@@ -1,7 +1,7 @@
-# autoload -Uz compinit
-# compinit
-# 
-# compdef g='git'
+autoload -Uz compinit
+compinit
+
+compdef g='git'
 
 function g() {
   git "$@"
